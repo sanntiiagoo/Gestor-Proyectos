@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'gestor.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'gestord3_gestor',
+        'USER': 'gestord3__dEdiQVZ-O9xF1kmbO7YYgjdWujq5H65C',
+        'PASSWORD': 'gestor_proyectos',
+        'HOST': 'cloud3.googiehost.com',
+        'PORT': 3306,
     }
 }
 
