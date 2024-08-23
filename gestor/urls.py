@@ -20,5 +20,8 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),
+    path('c', views.projectosvista),
+    path('',views.actualizarperfil),
+    path('',views.footer),#probando el footer p-p
+    
 ]
