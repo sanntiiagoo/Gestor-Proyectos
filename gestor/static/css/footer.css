@@ -1,0 +1,34 @@
+
+.footer {
+    background-color: #ffffff; 
+    color: #54BCDE; 
+}
+
+img{
+    margin-top: 15px;
+    width: 100px;
+    height: auto;
+}
+
+
+.footer h5 {
+    color: #54BCDE;
+    font-weight: bold;
+    font-family: AngsanaUPC
+}
+
+.footer a {
+    color: #54BCDE;
+    text-decoration: none;
+    text-align: left;
+    
+}
+.footer i{
+    color: #54bcde;
+    margin-top: 25px;
+}
+
+.footer a:hover {
+    color: #54BCDE;
+
+}
