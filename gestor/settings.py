@@ -79,13 +79,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'gestord3_gestor',
-        'USER': 'gestord3__dEdiQVZ-O9xF1kmbO7YYgjdWujq5H65C',
+        'USER': 'gestord3_admin',
         'PASSWORD': 'gestor_proyectos',
         'HOST': 'cloud3.googiehost.com',
-        'PORT': 3306,
-        "OPTIONS": {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES', innodb_strict_mode=1",
-            }
+        'PORT': 3306, 
     }
 }
 
@@ -93,6 +90,7 @@ DATABASES = {
 
 
 # Password validation
+# Test
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
