@@ -70,14 +70,6 @@ body {
     margin-left: 160px;
 }
 
-/* .content{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-} */
-
-/* .input{
-    grid-column: 1 / 3;
-} */
 
 .input_campos input{
     color: white;
@@ -92,7 +84,7 @@ body {
 }
 
 .password {
-    margin-left: 55px;
+    margin-left: 52px;
     background-color: #274960;
     border: 1px solid rgba(255, 255, 255, 0.664);
     box-shadow: 2px 3px 4px black;
