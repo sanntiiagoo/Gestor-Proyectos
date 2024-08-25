@@ -10,6 +10,7 @@ from django.contrib import messages
 def home(request):
     return render(request, 'index.html')
 #----------------Vista de proyectos----------------
+@login_required
 def projectos(request):
     return render(request,'vistaprojectos.html')
 #----------------Actualizar perfil----------------
