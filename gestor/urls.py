@@ -21,6 +21,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',views.home, name='index'),
     path('projectos/', views.projectos, name='projectos'),
     path('perfil/',views.actualizarperfil, name='actualizar_perfil'),
 ]
