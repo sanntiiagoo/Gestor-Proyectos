@@ -18,11 +18,12 @@
     <!–--saludotexto---iconoperfil-->
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-            <div class="welcome-text">Bienvenid@,Usuario</div>
+            <div class="welcome-text">Bienvenid@, {{user.username}}</div>
             <div class="profile-icon ">
-                <i class="fa-regular fa-user fa-2x">
-                    <a href="#"></a>
-                </i>
+                <a href="/perfil">
+                    {% comment %} <i class="fa-regular fa-user fa-2x"></i> {% endcomment %}
+                    <img src="{{ user.picture.url }}" alt="">
+                </a>
             </div>
         </div>
     <!–--saludotexto---iconoperfil-->
@@ -33,7 +34,7 @@
             <div class="project-title">GESTOR DE PROYECTOS</div>
             <div class="d-flex align-items-center">
                 <input type="text" class="search-bar " placeholder="Buscar...">
-                <button class="filter-btn ms-2"
+                <button class="filter-btn ms-2">
                     
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
