@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -8,10 +9,15 @@ def login(request):
 
 def registro(request):
     return render(request, 'registro.html')
-def vista_projectos(request):
+
+@login_required
+def vista(request):
     return render(request,'vistaprojectos.html')
 
 def actualizar_perfil(request):
+    return render(request,'perfilconfig.html')
+
+def perfilconfig(request):
     return render(request,'perfilconfig.html')
 
 #pa ver nomas el footer----------------

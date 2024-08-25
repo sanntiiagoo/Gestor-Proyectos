@@ -22,9 +22,12 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.login),
-    path('', views.registro),
-    path('',views.actualizar_perfil),
-    path('',views.footer),#probando el footer p-p
+    path('login/', views.login),
+    path('registro/', views.registro),
+    path('vista/',views.vista),
+    path('actualizar_perfil/',views.actualizar_perfil),
+    path('perfilconfig/', views.perfilconfig),#agregando la vista para el perfil
+    
     
 ]
 
