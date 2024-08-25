@@ -21,20 +21,9 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
-    path('', views.login),
-    path('login/', views.login),
-    path('registro/', views.registro),
-    path('vista/',views.vista),
-    path('actualizar_perfil/',views.actualizar_perfil),
-    path('perfilconfig/', views.perfilconfig),#agregando la vista para el perfil
-    
-    
-=======
     path('',views.home, name='index'),
     path('projectos/', views.projectos, name='projectos'),
     path('perfil/',views.actualizarperfil, name='actualizar_perfil'),
->>>>>>> proyectos
 ]
 
 if settings.DEBUG:

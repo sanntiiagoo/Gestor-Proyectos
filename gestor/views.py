@@ -1,19 +1,4 @@
-from django.http import HttpResponse
-<<<<<<< HEAD
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
 
-
-
-def login(request):
-    return render(request, 'login.html')
-
-def registro(request):
-    return render(request, 'registro.html')
-
-@login_required
-def vista(request):
-=======
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from user.models import User
@@ -27,17 +12,9 @@ def home(request):
 #----------------Vista de proyectos----------------
 @login_required
 def projectos(request):
->>>>>>> proyectos
     return render(request,'vistaprojectos.html')
 #----------------Actualizar perfil----------------
 
-<<<<<<< HEAD
-def actualizar_perfil(request):
-    return render(request,'perfilconfig.html')
-
-def perfilconfig(request):
-    return render(request,'perfilconfig.html')
-=======
 @login_required
 def actualizarperfil(request):
     if request.method == 'POST':
@@ -46,7 +23,6 @@ def actualizarperfil(request):
         number_phone = request.POST.get('number_phone')
         location = request.POST.get('location')
         password = request.POST.get('password')
->>>>>>> proyectos
 
         # Actualizar los campos del usuario
         user = request.user
