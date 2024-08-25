@@ -88,4 +88,9 @@ margin: 15px;
     
 }
 
+#password::placeholder {
+    color: rgb(182, 181, 181); /* Cambia 'gray' por el color que desees */
+    opacity: 1; /* Opcional: asegura que el color se muestre completamente */
+}
+
 
