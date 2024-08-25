@@ -27,7 +27,6 @@ body{
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color:  #0E2B3E;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,6 +36,13 @@ body{
 
 .profileicon i{
     color:#54BCDE
+}
+
+.profileicon i img {
+    color:#54BCDE;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
 
 
@@ -61,6 +67,7 @@ body{
     font-size: 17px;
     text-align: center;
     width: 160px;
+    
 }
 
 .container .input .input-group input{
@@ -89,8 +96,8 @@ margin: 15px;
 }
 
 #password::placeholder {
-    color: rgb(182, 181, 181); /* Cambia 'gray' por el color que desees */
-    opacity: 1; /* Opcional: asegura que el color se muestre completamente */
+    color: rgb(181, 181, 182);
+    opacity: 1;
 }
 
 

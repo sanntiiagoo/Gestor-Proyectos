@@ -1,10 +1,18 @@
 
-.footer {
-    background-color: #ffffff; 
-    color: #54BCDE; 
+*{
+    color: #54BCDE;
 }
 
-img{
+
+.footer .logo2 {
+    background-color: #ffffff; 
+    color: #54BCDE;
+    width: 100px;
+    
+
+}
+
+.container .logo2{
     margin-top: 15px;
     width: 100px;
     height: auto;
@@ -29,6 +37,13 @@ img{
 }
 
 .footer a:hover {
+    color: #54BCDE;
+
+}
+
+
+hr .txtfooter,
+.text-center p{
     color: #54BCDE;
 
 }
