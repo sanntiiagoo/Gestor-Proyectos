@@ -3,13 +3,15 @@ from django.shortcuts import render
 
 
 
-def home(request):
-    return render(request, 'index.html')
+def login(request):
+    return render(request, 'login.html')
 
-def projectosvista(request):
+def registro(request):
+    return render(request, 'registro.html')
+def vista_projectos(request):
     return render(request,'vistaprojectos.html')
 
-def actualizarperfil(request):
+def actualizar_perfil(request):
     return render(request,'perfilconfig.html')
 
 #pa ver nomas el footer----------------

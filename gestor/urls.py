@@ -21,8 +21,9 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('c', views.projectosvista),
-    path('',views.actualizarperfil),
+    path('', views.login),
+    path('', views.registro),
+    path('',views.actualizar_perfil),
     path('',views.footer),#probando el footer p-p
     
 ]
