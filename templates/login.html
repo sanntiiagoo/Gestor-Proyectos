@@ -21,18 +21,36 @@
           <a href=""><img src="{% static 'imagenes/logo.png'%}" alt="" /></a>
           <span class="material-symbols-outlined">person</span>
 
-          <div class="input_campos">
-            <label for="">Correo electrónico</label>
-            <input class="correo" type="text" />
-
-            <label for="">Contraseña</label>
-            <input class="password" type="password" />
-
-            <button class="btn btn-primary" id="boton" type="submit">Iniciar sesión</button>
-          </div>
-
-          <h6>No tienes una cuenta? <a href="registro.html">Registrate aqui</a></h6>
-        </div>
+          <!-- Bloque para mostrar mensajes de error -->
+          {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+          {% endif %}
+          <!-- Fin de bloque para mostrar mensajes de error -->
+           
+          <form class="input_campos" method="POST" action="{% url 'login' %}">
+            {% csrf_token %} <!-------Seguridad ataques CSRF----------------------->
+    
+            <!-------Campo de nombre de usuario o correo----------------------->
+            <div class="input-group">
+                <label for="username" class="col-form-label">Nombre de Usuario o Correo:</label>
+                <input type="text" class="form-control" name="username" style="color: white;" required>
+            </div>
+    
+            <!-------Campo de contraseña----------------------->
+            <div class="input-group">
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" class="form-control" name="password" style="color: white;" required>
+            </div>
+    
+            <!-------Botón de inicio de sesión----------------------->
+            <div class="input-group">
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            </div>
+        </form>
         <div class="image">
           <img src="{% static 'imagenes/fondo_señor.png' %}" alt="" />
         </div>

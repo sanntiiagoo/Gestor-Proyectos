@@ -12,29 +12,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/styles.css'%}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
   </head>
 
   <body>
     <section class="login">
       <div class="content">
+        {% if messages %}
+          {% for message in messages %}
+              {% if message.tags == 'success'%}
+                  <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+              {% elif message.tags == 'info' %}
+                  <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+              {% elif message.tags == 'warning' %}
+                  <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+              {% elif message.tags == 'error' %}
+                  <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+              {% endif %}
+          {% endfor %}
+        {% endif %}
         <div class="inputs">
           <a href=""><img src="{% static 'imagenes/logo.png'%}" alt="" /></a>
           <h1 class="crear">CREAR CUENTA</h1>
-          <div class="input_campos">
-
-            <label for="">Nombre Completo</label>
-            <input class="correo"type="text" required />
-
-            <label for="">Correo electrónico</label> 
-            <input class="correo" type="text" />
-
-            <label for="">Contraseña</label>
-            <input class="password" type="password" />
-
-            <button
-              class="btn btn-primary" id="boton" type="submit">Registrate
-            </button>
-          </div>
+          <form class="input_campos" method="POST" action="{% url 'registro' %}">
+            {% csrf_token %} <!-------Seguridad ataques CSRF----------------------->
+    
+            <!-------Campo de nombre de usuario----------------------->
+            <div class="input-group">
+                <label for="username" class="col-form-label">Nombre de Usuario:</label>
+                <input type="text" class="form-control" name="username" style="color: white;">
+            </div>
+    
+            <!-------Campo de correo electrónico----------------------->
+            <div class="input-group">
+                <label for="email" class="col-form-label">Correo Electrónico:</label>
+                <input type="email" class="form-control" name="email" style="color: white;">
+            </div>
+    
+            <!-------Campo de contraseña----------------------->
+            <div class="input-group">
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" class="form-control" name="password" style="color: white;">
+            </div>
+    
+            <!-------Campo de número de teléfono----------------------->
+            <div class="input-group">
+                <label for="number_phone" class="col-form-label">Número de Teléfono:</label>
+                <input type="tel" class="form-control" name="number_phone" style="color: white;">
+            </div>
+    
+            <!-------Campo de lugar de residencia----------------------->
+            <div class="input-group">
+                <label for="location" class="col-form-label">Lugar de Residencia:</label>
+                <input type="text" class="form-control" name="location" style="color: white;">
+            </div>
+    
+            <!-------Botón de registro----------------------->
+            <div class="input-group">
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+            </div>
+        </form>
 
         </div>
         <div class="image">
