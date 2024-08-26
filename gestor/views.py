@@ -19,6 +19,7 @@ def login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             auth_login(request, user)
+            messages.success(request, 'Inicio sesion correctamente.')
             return redirect('projectos')  # Redirige a la vista de proyectos si el login es exitoso
         else:
             messages.error(request, 'Credenciales inválidas. Por favor, inténtalo de nuevo.')
@@ -31,16 +32,19 @@ def registro(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
+        location = request.POST['location']
+        number_phone = request.POST['number_phone']
         
         if User.objects.filter(username=username).exists():
             messages.error(request, 'El nombre de usuario ya está en uso. Por favor, elige otro.')
         elif User.objects.filter(email=email).exists():
             messages.error(request, 'El correo electrónico ya está registrado. Por favor, usa otro.')
         else:
-            user = User.objects.create_user(username=username, email=email, password=password)
+            user = User.objects.create_user(username=username, email=email, password=password, location=location, number_phone=number_phone)
             user.save()
             auth_login(request, user)
-            return redirect('home')  # Redirige a la vista 'home' después del registro exitoso
+            messages.success(request, 'Registrado correctamente.')
+            return redirect('registro')  # Redirige a la vista 'home' después del registro exitoso
         
     return render(request, 'registro.html')
         
