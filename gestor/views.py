@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from user.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout
 #from django.contrib.auth.hashers import make_password
 
 
@@ -47,7 +47,11 @@ def registro(request):
             return redirect('registro')  # Redirige a la vista 'home' después del registro exitoso
         
     return render(request, 'registro.html')
-        
+
+#----------------LOGOUT----------------
+def exit(request):
+        logout(request)
+        return redirect('home')
 #----------------Vista de proyectos----------------
 @login_required
 def projectos(request):
