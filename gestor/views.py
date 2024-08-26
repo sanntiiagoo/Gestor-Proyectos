@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from user.models import User
 from django.contrib import messages
 import re
+from django.contrib.auth import authenticate, login as auth_login, logout
 
 
 #----------------Inicio----------------
@@ -96,10 +97,15 @@ def actualizarperfil(request):
 
             # Verificación de contraseña actual antes de cambiarla
             if password:
-                if not user.check_password(current_password):
-                    messages.error(request, 'La contraseña actual no es correcta.')
+                if current_password:
+                    if not user.check_password(current_password):
+                        messages.error(request, 'La contraseña actual no es correcta.')
+                        return redirect('actualizar_perfil')
+                    user.set_password(password)
+                    
+                else:
+                    messages.error(request, 'Ingrese la contraseña actual para cambiar la contraseña')
                     return redirect('actualizar_perfil')
-                user.set_password(password)
 
             # Actualizar los campos del usuario
             user.username = username
@@ -107,6 +113,7 @@ def actualizarperfil(request):
             user.number_phone = number_phone
             user.location = location
             user.save()
+            auth_login(request, user)
 
             messages.success(request, 'Tu perfil ha sido actualizado exitosamente.')
             return redirect('projectos')  # Redirige de vuelta a la página de perfil
