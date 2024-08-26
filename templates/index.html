@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
-    <link rel="stylesheet" href="{% static "css/cookies.css" %}">
+    <link rel="stylesheet" href="{% static 'css/cookies.css' %}">
     <link rel="stylesheet" href="{% static 'css/indexstyles.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 
@@ -51,11 +51,7 @@
             </a>
             
                 <div class="collapse navbar-collapse  " >
-                    
-                    <div class="botonlogin">
-                    {% if request.user.is_authenticated %}       
-                    </div>
-
+                    {% if request.user.is_authenticated %}     
                     <div class="botonlogout">    
                         <button class=" buttonlogout btn  " >
                     
@@ -68,7 +64,7 @@
                         <button class=" buttonproyectos btn  " >
                     
                             <i class="fa-regular fa-folder"></i>
-                            <a href="{% url 'login'%}">proyectos<a>
+                            <a href="{% url 'proyectos'%}">proyectos<a>
                                 
                         </button>
                     </div>    
