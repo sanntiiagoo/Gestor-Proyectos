@@ -22,8 +22,8 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home, name='home'),
-    #path('login/', views.login, name='login'),
-    path('accounts/', include ('django.contrib.auth.urls')),
+    path('login/', views.login, name='login'),
+    #path('accounts/', include ('django.contrib.auth.urls')),
     path('registro/', views.registro, name='registro'),
     path('projectos/', views.projectos, name='projectos'),
     path('perfil/',views.actualizarperfil, name='actualizar_perfil'),

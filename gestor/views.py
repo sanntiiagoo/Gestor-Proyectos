@@ -53,12 +53,12 @@ def exit(request):
         logout(request)
         return redirect('home')
 #----------------Vista de proyectos----------------
-@login_required
+@login_required(login_url="login")
 def projectos(request):
     return render(request,'vistaprojectos.html')
 #----------------Actualizar perfil----------------
 
-@login_required
+@login_required(login_url="login")
 def actualizarperfil(request):
     if request.method == 'POST':
         username = request.POST.get('username')
