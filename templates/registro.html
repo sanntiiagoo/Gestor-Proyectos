@@ -40,38 +40,38 @@
             {% csrf_token %} <!-------Seguridad ataques CSRF----------------------->
     
             <!-------Campo de nombre de usuario----------------------->
-            <div class="input-group">
-                <label for="username" class="col-form-label">Nombre de Usuario:</label>
-                <input type="text" class="form-control" name="username">
+            <div class="input_campos">
+                <label for="username" >Nombre de Usuario:</label>
+                <input type="text" name="username">
             </div>
     
             <!-------Campo de correo electrónico----------------------->
-            <div class="input-group">
-                <label for="email" class="col-form-label">Correo Electrónico:</label>
-                <input type="email" class="form-control" name="email">
+            <div class="input_campos">
+                <label for="email" >Correo Electrónico:</label>
+                <input type="email" name="email">
             </div>
     
             <!-------Campo de contraseña----------------------->
-            <div class="input-group">
-                <label for="password" class="form-label">Contraseña:</label>
-                <input type="password" class="form-control" name="password">
+            <div class="input_campos">
+                <label for="password" >Contraseña:</label>
+                <input type="password"  name="password">
             </div>
     
             <!-------Campo de número de teléfono----------------------->
-            <div class="input-group">
-                <label for="number_phone" class="col-form-label">Número de Teléfono:</label>
-                <input type="tel" class="form-control" name="number_phone">
+            <div class="input_campos">
+                <label for="number_phone" >Número de Teléfono:</label>
+                <input type="tel" name="number_phone">
             </div>
     
             <!-------Campo de lugar de residencia----------------------->
-            <div class="input-group">
-                <label for="location" class="col-form-label">Lugar de Residencia:</label>
-                <input type="text" class="form-control" name="location">
+            <div class="input_campos">
+                <label for="location" >Lugar de Residencia:</label>
+                <input type="text" name="location">
             </div>
     
             <!-------Botón de registro----------------------->
-            <div class="input-group">
-                <button type="submit" class="btn btn-primary">Registrarse</button>
+            <div class="input_campos">
+                <button type="submit" id="boton">Registrarse</button>
             </div>
         </form>
 
