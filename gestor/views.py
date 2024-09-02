@@ -5,7 +5,8 @@ from user.models import User
 from django.contrib import messages
 import re
 from django.contrib.auth import authenticate, login as auth_login, logout
-
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
 
 #----------------Inicio----------------
 def home(request):
@@ -16,6 +17,7 @@ def login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
+
         user = authenticate(request, username=username, password=password)
         if user is not None:
             auth_login(request, user)
@@ -27,26 +29,60 @@ def login(request):
 
 #----------------Registro----------------
 
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+from django.shortcuts import render, redirect
+from django.contrib.auth import login as auth_login
+import re  # Importa la librería para usar expresiones regulares
+
 def registro(request):
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
         location = request.POST['location']
         number_phone = request.POST['number_phone']
+
+        # Validar que el nombre de usuario no contenga números
+        if any(char.isdigit() for char in username):
+            messages.error(request, 'El nombre de usuario no puede contener números.')
+            return render(request, 'registro.html')
+
+        # Validar que la contraseña tenga entre 7 y 20 caracteres
+        if len(password) < 7 or len(password) > 20:
+            messages.error(request, 'La contraseña debe tener entre 7 y 20 caracteres.')
+            return render(request, 'registro.html')
         
+        # Validar que la contraseña coincida con la confirmación
+        if password != confirm_password:
+            messages.error(request, 'Las contraseñas no coinciden.')
+            return render(request, 'registro.html')
+
+        # Validar que el email sea un correo
+        try:
+            validate_email(email)  # Verifica el email
+        except ValidationError:
+            messages.error(request, 'El email no cumple con los parámetros @.')
+            return render(request, 'registro.html')
+
+        # Verifica usuario y email
         if User.objects.filter(username=username).exists():
             messages.error(request, 'El nombre de usuario ya está en uso. Por favor, elige otro.')
         elif User.objects.filter(email=email).exists():
             messages.error(request, 'El correo electrónico ya está registrado. Por favor, usa otro.')
         else:
-            user = User.objects.create_user(username=username, email=email, password=password, location=location, number_phone=number_phone)
+            # Crea el usuario si no están en uso
+            user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
             auth_login(request, user)
             messages.success(request, 'Registrado correctamente.')
             return redirect('proyectos')  # Redirige a la vista 'home' después del registro exitoso
-        
+
     return render(request, 'registro.html')
+
 
 #----------------LOGOUT----------------
 def exit(request):
