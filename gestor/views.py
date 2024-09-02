@@ -158,3 +158,25 @@ def actualizarperfil(request):
             return redirect('proyectos')  # Redirige de vuelta a la página de perfil
 
     return render(request, 'perfilconfig.html')  # Asegúrate de que este nombre coincida con tu archivo de plantilla
+
+@login_required
+def crearprojectos(request):
+        if request.method == 'POST':
+            nombre = request.POST.get('nombre')
+            descripcion = request.POST.get('descripcion')
+            #fecha_inicio = request.POST.get('fecha_inicio')
+            #fecha_fin = request.POST.get('fecha_fin')
+
+            #Validar nombre y descripcion no esten vacios
+            if not nombre or not descripcion:
+                messages.error(request, 'Por favor, ingresa un nombre y una descripción.')
+                return redirect('crearprojectos')
+            
+            #Crear y guardar proyecto
+            Proyecto.objects.create(nombre=nombre, descripcion=descripcion, creador=request.user)
+            messages.success(request, 'Proyecto creado exitosamente.')
+
+            return redirect('proyectos')  # Redirige a la lista de proyectos
+        
+        
+        return render(request, 'crearprojectos.html')
