@@ -20,7 +20,7 @@ def login(request):
         if user is not None:
             auth_login(request, user)
             messages.success(request, 'Inicio sesion correctamente.')
-            return redirect('projectos')  # Redirige a la vista de proyectos si el login es exitoso
+            return redirect('proyectos')  # Redirige a la vista de proyectos si el login es exitoso
         else:
             messages.error(request, 'Credenciales inválidas. Por favor, inténtalo de nuevo.')
     return render(request, 'login.html')
@@ -44,7 +44,7 @@ def registro(request):
             user.save()
             auth_login(request, user)
             messages.success(request, 'Registrado correctamente.')
-            return redirect('registro')  # Redirige a la vista 'home' después del registro exitoso
+            return redirect('proyectos')  # Redirige a la vista 'home' después del registro exitoso
         
     return render(request, 'registro.html')
 
@@ -54,7 +54,7 @@ def exit(request):
         return redirect('home')
 #----------------Vista de proyectos----------------
 @login_required(login_url="login")
-def projectos(request):
+def proyectos(request):
     return render(request,'vistaprojectos.html')
 #----------------Actualizar perfil----------------
 
@@ -116,9 +116,9 @@ def actualizarperfil(request):
             auth_login(request, user)
 
             messages.success(request, 'Tu perfil ha sido actualizado exitosamente.')
-            return redirect('projectos')  # Redirige de vuelta a la página de perfil
+            return redirect('proyectos')  # Redirige de vuelta a la página de perfil
         else:
             messages.info(request, 'No hubo ningun cambio en tu perfil.')
-            return redirect('projectos')  # Redirige de vuelta a la página de perfil
+            return redirect('proyectos')  # Redirige de vuelta a la página de perfil
 
     return render(request, 'perfilconfig.html')  # Asegúrate de que este nombre coincida con tu archivo de plantilla
