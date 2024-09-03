@@ -9,7 +9,7 @@ header{
 }
 
 header img{
-    width: 35%;
+
     max-width: 100%;
     height: auto;
 }
@@ -19,21 +19,12 @@ img:hover{
 }
 
 
-.botonlogout,
-.botonproyectos,
-.botonlogin{
-    background-color: #0E2B3E;
+
     border-radius: 15px;
     width: 150px;
     height: auto;
     align-items: center;
-    margin: 10px;
-}
 
-
-
-.botonproyectos a,
-.botonlogout a,
 .botonlogin a{
     color: #54BCDE;
     text-decoration: none;
