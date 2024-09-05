@@ -84,6 +84,7 @@ def registro(request):
     return render(request, 'registro.html')
 
 #-----------ver los proyectos------------
+@login_required(login_url="login")
 def verproyectos(request):
     return render(request, 'verproyectos.html')
 
