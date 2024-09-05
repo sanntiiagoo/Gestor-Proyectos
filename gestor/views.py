@@ -29,14 +29,6 @@ def login(request):
 
 #----------------Registro----------------
 
-from django.contrib import messages
-from django.contrib.auth.models import User
-from django.core.validators import validate_email
-from django.core.exceptions import ValidationError
-from django.shortcuts import render, redirect
-from django.contrib.auth import login as auth_login
-import re  # Importa la librería para usar expresiones regulares
-
 def registro(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -180,3 +172,45 @@ def crearprojectos(request):
         
         
         return render(request, 'crearprojectos.html')
+
+@login_required
+def actualizar_proyecto(request, proyecto_id):
+    proyecto = get_object_or_404(Proyecto, id=proyecto_id)
+
+    # Verificar si el usuario tiene permiso para actualizar el proyecto
+    if request.user != proyecto.administrador:
+        return HttpResponseForbidden("No tienes permiso para actualizar este proyecto.")
+
+    if request.method == "POST":
+        form = ProyectoForm(request.POST, instance=proyecto)
+        
+        if form.is_valid():
+            # Verificar cambios
+            cambios = {}
+            proyecto_actualizado = form.save(commit=False)
+            
+            if proyecto.nombre != proyecto_actualizado.nombre:
+                cambios['nombre'] = (proyecto.nombre, proyecto_actualizado.nombre)
+            if proyecto.descripcion != proyecto_actualizado.descripcion:
+                cambios['descripcion'] = (proyecto.descripcion, proyecto_actualizado.descripcion)
+
+            
+            # Guardar el proyecto si todo está validado correctamente
+            proyecto_actualizado.save()
+
+            # Registrar cambios si hubo alguno
+            if cambios:
+                ProyectoUpdateLog.objects.create(
+                    proyecto=proyecto_actualizado,
+                    usuario=request.user,
+                    cambios=cambios
+                )
+                messages.success(request, "El proyecto ha sido actualizado y los cambios han sido registrados.")
+            else:
+                messages.info(request, "No hubo cambios en el proyecto.")
+            
+            return redirect('proyecto_detalle', proyecto_id=proyecto.id)
+    else:
+        form = ProyectoForm(instance=proyecto)
+
+    return render(request, 'proyectos/actualizar.html', {'form': form})
