@@ -83,6 +83,9 @@ def registro(request):
 
     return render(request, 'registro.html')
 
+#-----------ver los proyectos------------
+def verproyectos(request):
+    return render(request, 'verproyectos.html')
 
 #----------------LOGOUT----------------
 def exit(request):

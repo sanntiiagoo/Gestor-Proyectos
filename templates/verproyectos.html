@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Proyectos</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/verproyectos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!------ventanas toast.js------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/toast.js' %}"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href=" {% static 'imagenes/ico/logo-gestor-proyectos-en-azul.ico' %}">
+</head>
+
+<body>
+    <div class="contenedor-principal">
+        <aside class="barra-lateral">
+            <img src="{% static 'images/logo-robot.png' %}" alt="imagen proyecto" class="logo">
+            <button class="boton-lateral">Actualizar proyecto</button>
+            <button class="boton-lateral">Agregar usuarios</button>
+            <button class="boton-lateral">Eliminar usuarios</button>
+            <button class="boton-lateral">Fechas y anotaciones</button>
+            <button class="boton-lateral">Volver</button>
+        </aside>
+
+        <main class="contenido-principal">
+            <header class="encabezado">
+                <h1>PROYECTO X</h1>
+                <div class="fechas">
+                    <p>Fecha inicial: 0X/0X/20XX</p>
+                    <p>Fecha final: 0X/0X/20XX</p>
+                </div>
+            </header>
+
+            <section class="documentos">
+                <h2>DOCUMENTO</h2>
+                <!--  <div class="iconos-documentos">
+                    <div class="icono">
+                        <img src="{% static 'images/icono-cargar.png' %}" alt="Cargar documento">
+                        <p>Cargar documento</p>
+                    </div>
+                    <div class="icono">
+                        <img src="{% static 'images/icono-doc.png' %}" alt="Wall-e.docs">
+                        <p>Wall-e.docs</p>
+                    </div>
+                    <div class="icono">
+                        <img src="{% static 'images/icono-excel.png' %}" alt="Eva.excel">
+                        <p>Eva.excel</p>
+                    </div>
+                    <div class="icono">
+                        <img src="{% static 'images/icono-pdf.png' %}" alt="Transformer.pdf">
+                        <p>Transformer.pdf</p>
+                    </div>
+                </div> -->
+            </section>
+
+            <section class="progreso">
+                <h3>Progreso del proyecto</h3>
+                <div class="barra-progreso">
+                    <div class="progreso-completado" style="width: 0%;"></div>
+                </div>
+                <p class="porcentaje">0%</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- <footer class="pie-pagina">
+        <div class="seccion-pie">
+            <h4>GESTOR PROYECTOS</h4>
+        </div>
+        <div class="seccion-pie redes-sociales">
+            <h4>REDES SOCIALES</h4>
+            <a href="#"><img src="{% static 'images/facebook.png' %}" alt="Facebook"></a>
+            <a href="#"><img src="{% static 'images/instagram.png' %}" alt="Instagram"></a>
+            <a href="#"><img src="{% static 'images/whatsapp.png' %}" alt="WhatsApp"></a>
+        </div>
+        <div class="seccion-pie">
+            <h4>NOSOTROS</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Quiénes somos</a></li>
+                <li><a href="#">Preguntas frecuentes</a></li>
+                <li><a href="#">Términos y condiciones</a></li>
+            </ul>
+        </div>
+    </footer> -->
+
+    {% include "footer.html" %}
+
+</body>
+
+</html>

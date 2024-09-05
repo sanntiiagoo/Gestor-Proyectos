@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.contenedor-principal {
+    display: flex;
+    height: 100vh;
+}
+
+.barra-lateral {
+    width: 280px;
+    background-color: #FFF; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid #0E2B3E;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.boton-lateral {
+    width: 100%;
+    margin: 10px 0;
+    padding: 20px;
+    background-color: #0E2B3E; 
+    border-radius: 20px;
+    color: #54BCDE;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.boton-lateral:hover {
+    background-color: #54BCDE; 
+    color: #0E2B3E;
+}
+
+
+.contenido-principal {
+    flex: 1;
+    padding: 20px;
+    background-color: #FFFFFF; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.encabezado {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 2px solid #0E2B3E;
+    padding-bottom: 10px;
+}
+
+.encabezado h1 {
+    color: #0E2B3E;
+    font-size: 30px;
+}
+
+.fechas {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.fechas p {
+    margin: 0;
+    font-size: 25px;
+    color: #54BCDE;
+}
+
+
+.documentos {
+    margin-top: 20px;
+    text-align: center;
+    margin-top: -100px;
+}
+
+.documentos h2 {
+    font-size: 30px;
+    color: #0E2B3E;
+    margin-bottom: 10px;
+}
+
+/* .iconos-documentos {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.icono {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icono img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.icono p {
+    font-size: 12px;
+    color: #333;
+}
+ */
+
+.progreso {
+    margin-top: 20px;
+}
+
+.progreso h3 {
+    font-size: 30px;
+    color: #54BCDE;
+    margin-bottom: 10px;
+}
+
+.barra-progreso {
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.progreso-completado {
+    height: 100%;
+    background-color: #54BCDE; 
+    transition: width 0.3s;
+}
+
+.porcentaje {
+    text-align: right;
+    font-size: 14px;
+    color: #555;
+}
+
+/* footer.pie-pagina {
+    width: 100%;
+    background-color: #0E2B3E; 
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; 
+}
+
+.seccion-pie {
+    flex: 1;
+    text-align: center;
+}
+
+.redes-sociales a {
+    margin: 0 10px;
+}
+
+footer h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin: 5px 0;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
+ */
