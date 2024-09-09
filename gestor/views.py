@@ -7,7 +7,7 @@ import re
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
-
+from django.views.decorators.csrf import csrf_exempt
 #----------------Inicio----------------
 def home(request):
     return render(request, 'index.html')
@@ -28,15 +28,16 @@ def login(request):
     return render(request, 'login.html')
 
 #----------------Registro----------------
-
+@csrf_exempt
 def registro(request):
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         confirm_password = request.POST['confirm_password']
-        location = request.POST['location']
-        number_phone = request.POST['number_phone']
+        location = request.POST.get('location', '').strip()  # Asegúrate de que 'location' sea capturado
+        number_phone = request.POST.get('number_phone', '').strip()
+        
 
         # Validar que el nombre de usuario no contenga números
         if any(char.isdigit() for char in username):

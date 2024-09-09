@@ -9,7 +9,7 @@ phone_validator = RegexValidator(regex=r'^\d{1,14}$', message="El número de tel
 
 class User(AbstractUser):
     picture = models.ImageField(default='profile_default.png', upload_to='users/')
-    location = models.CharField(max_length=60, null= True, blank=True)
+    location = models.CharField(max_length=60, blank=True)
     number_phone = models.CharField(max_length=14, 
         validators=[phone_validator], 
         null=True, 
