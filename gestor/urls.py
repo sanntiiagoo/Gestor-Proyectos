@@ -28,7 +28,7 @@ urlpatterns = [
     path('proyectos/', views.proyectos, name='proyectos'),
     path('perfil/',views.actualizarperfil, name='actualizar_perfil'),
     path('logout/',views.exit, name='logout'),
-    path('crearprojectos/',views.crearprojectos, name='crearprojectos'),
+    path('verproyectos/',views.verproyectos, name='verproyectos'),
 
 ]
 

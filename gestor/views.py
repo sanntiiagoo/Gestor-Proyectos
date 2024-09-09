@@ -75,6 +75,10 @@ def registro(request):
 
     return render(request, 'registro.html')
 
+#-----------ver los proyectos------------
+@login_required(login_url="login")
+def verproyectos(request):
+    return render(request, 'verproyectos.html')
 
 #----------------LOGOUT----------------
 def exit(request):
@@ -119,8 +123,8 @@ def actualizarperfil(request):
                     return redirect('actualizar_perfil')
 
             if location != user.location:
-                if not re.match(r'^[a-zA-Z\s]{7,20}$', location):
-                    messages.error(request, 'El lugar de residencia debe tener entre 7 y 20 caracteres y no incluir caracteres especiales.')
+                if not re.match(r'^[a-zA-Z\s]{4,20}$', location):
+                    messages.error(request, 'El lugar de residencia debe tener entre 4 y 20 caracteres y no incluir caracteres especiales.')
                     return redirect('actualizar_perfil')
 
             # Verificación de contraseña actual antes de cambiarla
