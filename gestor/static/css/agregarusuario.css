@@ -1,4 +1,4 @@
-/* Estilos personalizados */
+
 .container {
     text-align: center;
 }
@@ -7,7 +7,6 @@
     margin-bottom: 20px;
 }
 
-/* Modal personalizado */
 .modal-header {
     background-color: #f8f9fa;
 }
@@ -24,7 +23,7 @@
     background-color: #f1f1f1;
 }
 
-/* Botones */
+
 .btn-primary {
     background-color: #0e2b3e;
     color: #54bcde;
