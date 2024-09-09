@@ -81,6 +81,14 @@ def registro(request):
 def verproyectos(request):
     return render(request, 'verproyectos.html')
 
+
+#-----------------Usuarios---------------
+@login_required(login_url="login")
+def verusuarios(request):
+    return render(request,'usuarios.html')
+
+
+
 #----------------LOGOUT----------------
 def exit(request):
         logout(request)
@@ -89,6 +97,9 @@ def exit(request):
 @login_required(login_url="login")
 def proyectos(request):
     return render(request,'vistaprojectos.html')
+
+
+
 #----------------Actualizar perfil----------------
 
 @login_required(login_url="login")
