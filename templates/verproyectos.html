@@ -8,7 +8,7 @@
     <title>Gestor de Proyectos</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/verproyectos.css' %}">
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/footer.css' %}"> -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
@@ -73,28 +73,45 @@
         </main>
     </div>
 
-    <!-- <footer class="pie-pagina">
-        <div class="seccion-pie">
-            <h4>GESTOR PROYECTOS</h4>
-        </div>
-        <div class="seccion-pie redes-sociales">
-            <h4>REDES SOCIALES</h4>
-            <a href="#"><img src="{% static 'images/facebook.png' %}" alt="Facebook"></a>
-            <a href="#"><img src="{% static 'images/instagram.png' %}" alt="Instagram"></a>
-            <a href="#"><img src="{% static 'images/whatsapp.png' %}" alt="WhatsApp"></a>
-        </div>
-        <div class="seccion-pie">
-            <h4>NOSOTROS</h4>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Quiénes somos</a></li>
-                <li><a href="#">Preguntas frecuentes</a></li>
-                <li><a href="#">Términos y condiciones</a></li>
-            </ul>
-        </div>
-    </footer> -->
+    <footer class="footer mb-0" >
 
-    {% include "footer.html" %}
+        <!---------Logo----y titulo--Gestorproyectos-------->
+        <div class="container">
+            <div class="row w-100">
+                <div class="col-md-4 mb-4 mb-md-0 text-center">
+                    <h5 class="text-uppercase">GESTOR PROYECTOS</h5>
+                    <img  src="{% static 'imagenes/logo_gestor.png' %}" alt="Logo" class="logo2 img-fluid" >
+                </div>
+
+                <!----------Redes sociales---------------->
+                <div class="col-md-4 mb-4 mb-md-0 text-center">
+                    <h5 class="text-uppercase">REDES SOCIALES</h5>
+                    <a href="#" class="text-primary mx-3"><i class="fa-brands fa-square-facebook fa-3x"></i></a>
+                    <a href="#" class="text-primary mx-3"><i class="fa-brands fa-instagram fa-3x"></i></a>
+                    <a href="#" class="text-primary mx-3"><i class="fa-brands fa-whatsapp fa-3x"></i></a>
+                </div>
+
+                <!------------------Sobre Nosotros------------------------>
+                <div class="col-3 text-center">
+                    <h5 class="text-uppercase">NOSOTROS</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text">Home</a></li>
+                        <li><a href="#" class="text">Quienes somos</a></li>
+                        <li><a href="#" class="text">Preguntas frecuentes</a></li>
+                        <li><a href="#" class="text">Términos y condiciones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        <!----------la linea ----------->
+        <hr class="txtfooter my-1">
+        <div class="text-center">
+            <p class="pfooter mb-0  mt-0">© 2024 Gestor de proyectos company. Reservados todos los derechos</p>
+        </div>
+
+    </footer>
+
 
 </body>
 
