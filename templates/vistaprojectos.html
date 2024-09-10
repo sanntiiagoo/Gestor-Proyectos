@@ -181,7 +181,9 @@
                             <div class="content">
                                 <div class="inputs">
                                     <span class="close-btn">&times;</span>
+                                    
                                     <h2>Crear nuevo proyecto</h2>
+
                                     <form method="POST" action="{% url 'crearproyecto' %}">
                                         {% csrf_token %}
                                    {% comment %}  Campo de nombre {% endcomment %}
@@ -209,7 +211,7 @@
                                         </form>
                                     </div>
                                     
-                                        <a href="{% url 'proyectos' %}"><button class="btncrear" type="submit" id="boton">Crear</button></a>
+                                        <button class="btncrear" type="submit" id="boton">Crear</button>
                                     </form>          
                                   </form>
                                 </div>
