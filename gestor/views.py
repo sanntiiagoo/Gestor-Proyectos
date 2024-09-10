@@ -168,7 +168,10 @@ def actualizarperfil(request):
 
     return render(request, 'perfilconfig.html')  # Asegúrate de que este nombre coincida con tu archivo de plantilla
 
-@login_required
+#----------------Crear Proyectos----------------
+
+
+@login_required(login_url="login")
 def crearproyecto(request):
     if request.method == 'POST':
         # Recoger datos del formulario
