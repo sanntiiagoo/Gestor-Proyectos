@@ -214,7 +214,3 @@ def actualizarperfil(request):
 #----------------Crear Proyectos----------------
 
 
-""" @login_required(login_url="login")
-def crearproyecto(request):
-    return render(request,'vistaprojectos.html') """
-
