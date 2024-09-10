@@ -172,10 +172,10 @@ def actualizarperfil(request):
 def crearproyecto(request):
     if request.method == 'POST':
         # Recoger datos del formulario
-        nombre = request.POST.get('username')
-        descripcion = request.POST.get('Descripcion')
-        fecha_inicio = request.POST.get('startDate')
-        fecha_fin = request.POST.get('endDate')
+        nombre = request.POST.get('nombre')
+        descripcion = request.POST.get('descripcion')
+        fecha_inicio = request.POST.get('fecha_inicio')
+        fecha_fin = request.POST.get('fecha_fin')
 
         # Validar que todos los campos están llenos
         if nombre and descripcion and fecha_inicio and fecha_fin:
@@ -190,7 +190,7 @@ def crearproyecto(request):
                 proyecto.save()
                 
                 messages.success(request, 'Proyecto creado exitosamente.')
-                return redirect('verproyectos')  # Redireccionar a la vista de proyectos
+                return redirect('proyectos')  # Redireccionar a la vista de proyectos
             except Exception as e:
                 messages.error(request, f'Ocurrió un error al crear el proyecto: {e}')
         else:
