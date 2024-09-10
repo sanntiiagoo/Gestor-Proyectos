@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.views.decorators.csrf import csrf_exempt
+from user.models import Proyecto
 #----------------Inicio----------------
 def home(request):
     return render(request, 'index.html')
@@ -168,26 +169,34 @@ def actualizarperfil(request):
     return render(request, 'perfilconfig.html')  # Asegúrate de que este nombre coincida con tu archivo de plantilla
 
 @login_required
-def crearprojectos(request):
-        if request.method == 'POST':
-            nombre = request.POST.get('nombre')
-            descripcion = request.POST.get('descripcion')
-            #fecha_inicio = request.POST.get('fecha_inicio')
-            #fecha_fin = request.POST.get('fecha_fin')
+def crearproyecto(request):
+    if request.method == 'POST':
+        # Recoger datos del formulario
+        nombre = request.POST.get('username')
+        descripcion = request.POST.get('Descripcion')
+        fecha_inicio = request.POST.get('startDate')
+        fecha_fin = request.POST.get('endDate')
 
-            #Validar nombre y descripcion no esten vacios
-            if not nombre or not descripcion:
-                messages.error(request, 'Por favor, ingresa un nombre y una descripción.')
-                return redirect('crearprojectos')
-            
-            #Crear y guardar proyecto
-            Proyecto.objects.create(nombre=nombre, descripcion=descripcion, creador=request.user)
-            messages.success(request, 'Proyecto creado exitosamente.')
+        # Validar que todos los campos están llenos
+        if nombre and descripcion and fecha_inicio and fecha_fin:
+            try:
+                # Crear y guardar el proyecto usando el modelo Proyecto
+                proyecto = Proyecto(
+                    nombre=nombre,
+                    descripcion=descripcion,
+                    fecha_inicio=fecha_inicio,
+                    fecha_fin=fecha_fin
+                )
+                proyecto.save()
+                
+                messages.success(request, 'Proyecto creado exitosamente.')
+                return redirect('verproyectos')  # Redireccionar a la vista de proyectos
+            except Exception as e:
+                messages.error(request, f'Ocurrió un error al crear el proyecto: {e}')
+        else:
+            messages.error(request, 'Por favor, rellene todos los campos.')
 
-            return redirect('proyectos')  # Redirige a la lista de proyectos
-        
-        
-        return render(request, 'crearprojectos.html')
+    return render(request, 'vistaprojectos.html')
 
 @login_required
 def actualizar_proyecto(request, proyecto_id):
