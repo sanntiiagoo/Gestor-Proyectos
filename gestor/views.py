@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.views.decorators.csrf import csrf_exempt
-from user.models import Proyecto
+from user.models import Proyecto, MiembrosProyectos, Roles
 #----------------Inicio----------------
 def home(request):
     return render(request, 'index.html')
@@ -97,7 +97,50 @@ def exit(request):
 #----------------Vista de proyectos----------------
 @login_required(login_url="login")
 def proyectos(request):
-    return render(request,'vistaprojectos.html')
+    if request.method == 'POST':
+        # Recoger datos del formulario
+        nombre = request.POST.get('nombre')
+        descripcion = request.POST.get('descripcion')
+        fecha_inicio = request.POST.get('fecha_inicio')
+        fecha_fin = request.POST.get('fecha_fin')
+
+        # Validar que todos los campos están llenos
+        if nombre and descripcion and fecha_inicio and fecha_fin:
+            try:
+                # Crear y guardar el proyecto usando el modelo Proyecto
+                proyecto = Proyecto(
+                    nombre=nombre,
+                    descripcion=descripcion,
+                    fecha_inicio=fecha_inicio,
+                    fecha_fin=fecha_fin
+                )
+                proyecto.save()
+                
+                # Asociar al usuario actual con el proyecto
+                miembro_proyecto = MiembrosProyectos(
+                    usuario=request.user,
+                    proyecto=proyecto,
+                    rol=Roles.objects.get(rol='Administrador del departamento')  # Asigna un rol por defecto o personalizado
+                )
+                miembro_proyecto.save()
+                
+                messages.success(request, 'Proyecto creado exitosamente.')
+            except Exception as e:
+                messages.error(request, f'Ocurrió un error al crear el proyecto: {e}')
+        else:
+            messages.error(request, 'Por favor, rellene todos los campos.')
+
+    # Obtener los proyectos en los que el usuario es miembro
+    proyectos_usuario = Proyecto.objects.filter(
+        id__in=MiembrosProyectos.objects.filter(usuario=request.user).values('proyecto')
+    )
+
+    # Pasar los proyectos al contexto de la plantilla
+    context = {
+        'proyectos_usuario': proyectos_usuario
+    }
+
+    return render(request, 'vistaprojectos.html', context)
 
 
 
@@ -171,33 +214,7 @@ def actualizarperfil(request):
 #----------------Crear Proyectos----------------
 
 
-@login_required(login_url="login")
+""" @login_required(login_url="login")
 def crearproyecto(request):
-    if request.method == 'POST':
-        # Recoger datos del formulario
-        nombre = request.POST.get('nombre')
-        descripcion = request.POST.get('descripcion')
-        fecha_inicio = request.POST.get('fecha_inicio')
-        fecha_fin = request.POST.get('fecha_fin')
-
-        # Validar que todos los campos están llenos
-        if nombre and descripcion and fecha_inicio and fecha_fin:
-            try:
-                # Crear y guardar el proyecto usando el modelo Proyecto
-                proyecto = Proyecto(
-                    nombre=nombre,
-                    descripcion=descripcion,
-                    fecha_inicio=fecha_inicio,
-                    fecha_fin=fecha_fin
-                )
-                proyecto.save()
-                
-                messages.success(request, 'Proyecto creado exitosamente.')
-                return render(request, 'vistaprojectos.html')  # Renderizar la plantilla de proyectos
-            except Exception as e:
-                messages.error(request, f'Ocurrió un error al crear el proyecto: {e}')
-        else:
-            messages.error(request, 'Por favor, rellene todos los campos.')
-
-    return render(request, 'vistaprojectos.html')
+    return render(request,'vistaprojectos.html') """
 

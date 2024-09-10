@@ -184,7 +184,7 @@
                                     
                                     <h2>Crear nuevo proyecto</h2>
 
-                                    <form method="POST" action="{% url 'crearproyecto' %}">
+                                    <form method="POST" action="{% url 'proyectos' %}">
                                         {% csrf_token %}
                                    {% comment %}  Campo de nombre {% endcomment %}
                                     <div class="input_campos">
@@ -218,8 +218,21 @@
                     <!--Fin de modal emergente-->
                 </div>
             </div>
+            {% for proyecto in proyectos_usuario %}
+                <div class="col-md-3">
+                    <div class="project-card">
+                        <h5>{{ proyecto.nombre }}</h5>
+                        <p>{{ proyecto.descripcion }}</p>
+                        <button class="btn btn-view">Ver proyecto
+                            <a href="#"></a>
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
 
-            <div class="col-md-3">
+
+
+            {% comment %} <div class="col-md-3">
                 <div class="project-card">
                     <h5>Facultad Robot</h5>
                     <p>Administrador</p>
@@ -246,7 +259,7 @@
                     </button>
                 </div>
                 
-            </div>
+            </div> {% endcomment %}
             
             
         </div>
