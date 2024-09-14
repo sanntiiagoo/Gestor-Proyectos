@@ -22,7 +22,8 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Activate virtual environment and install dependencies
       run: |
-            source env/Scripts/activate
+        source venv/bin/activate
+        pip install -r requirements.txt
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
